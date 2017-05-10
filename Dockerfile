@@ -1,7 +1,10 @@
 FROM centos:7
 
 ARG S2I_VERSION=1.1.5-4dd7721
-RUN yum install -y docker-client git make && yum clean all && \
+RUN yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
+	yum makecache fast -y && \
+	yum install -y docker-ce git make && \
+	yum clean all -y && \
     os=$(uname -s | tr '[:upper:]' '[:lower:]'); \ 
     arch=$(uname -m | sed 's/x86_/amd/' | tr -d 'i' | sed 's/686/386/'); \
     version=$(echo "${S2I_VERSION}" | cut -f1 -d-); \
