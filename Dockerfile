@@ -1,6 +1,6 @@
 FROM centos:7
 
-ARG S2I_VERSION=1.1.8-e3140d01
+ARG S2I_VERSION=1.1.11-78a76d9
 RUN yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
 	yum makecache fast -y && \
 	yum install -y docker-ce git make && \
